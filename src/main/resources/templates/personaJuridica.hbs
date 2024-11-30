@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viandas Solidarias | Donaciones</title>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+<header class="header">
+    <nav>
+        <a href="/personaJuridica">
+            <img src="../assets/img/logo.png" alt="Logo de Viandas Solidarias" loading="lazy" width="100">
+        </a>
+        <ul>
+            <li><a href="/perfil">Mi Perfil</a></li>
+        <li>
+            <a href="/cerrarSesion">
+                <img src="../assets/img/cerrarSesion.png" alt="Cerrar sesión" loading="lazy">
+            </a>
+        </li>
+        </ul>
+    </nav>
+</header>
+
+<main class="main">
+    <section class="personaHumana">
+        <h3>Bienvenido {{nombreUsuario}}!</h3>
+        <h1>Actividades para realizar:</h1>
+        <p>En esta sección podrás realizar diversas actividades.</p>
+    </section>
+
+    <section class="section">
+        <div class="actividades">
+            <div class="actividad">
+                <img src="../assets/img/registroColaboracion.png" alt="Registra nueva colaboración">
+                <h3>Registra nueva colaboración</h3>
+                <p>Colabora con tu tiempo o recursos y ayuda a quienes más lo necesitan.</p>
+                <button onclick="window.location.href='/colaboraciones'">Colabora</button>
+            </div>
+
+            <div class="actividad">
+                <img src="../assets/img/visualizarHeladera.png" alt="Visualizar heladeras">
+                <h3>Visualizar heladeras</h3>
+                <p>Accede a un listado de todas las heladeras solidarias a tu cargo.  </p>
+                <button onclick="window.location.href='/visualizarHeladeras'">Visualiza</button>
+            </div>
+
+            <div class="actividad">
+                <img src="../assets/img/visualizarOferta.png" alt="Visualizar ofertas">
+                <h3>Visualizar ofertas</h3>
+                <p>Explora todas las ofertas que tenes publicadas.</p>
+                <button onclick="window.location.href='/visualizarOfertas'">Visualiza</button>
+            </div>
+
+            <div class="actividad">
+                <img src="../assets/img/visualizarReporte.png" alt="Visualizar reportes">
+                <h3>Visualizar reportes</h3>
+                <p>Consulta todos los reportes generados, incluyendo fallas, mantenimientos y actividades.</p>
+                <button onclick="window.location.href='/visualizarReportes'">Visualiza reportes</button>
+            </div>
+
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <nav>
+        <ul>
+            <li><a href="/termino">Términos y condiciones</a></li>
+            <li><a href="/preguntasFrecuentes">Preguntas frecuentes</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    <a href="#" class="scroll-to-top" aria-label="Subir al inicio">
+        <img src="../assets/img/flecha-hacia-arriba-blanca.png" alt="Ir arriba flecha">
+    </a>
+</footer>
+<script src="../js/colaboracionesPHumana.js"></script>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="../js/mapa.js"></script>
+</body>
+</html>

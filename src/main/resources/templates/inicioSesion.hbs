@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viandas Solidarias | Vianda para todos</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+
+<body>
+<header class="header">
+    <nav>
+        <a href="/inicio">
+            <img src="../assets/img/logo.png" alt="Logo de Viandas solidarias" loading="lazy" width="100">
+        </a>
+    </nav>
+</header>
+
+<main>
+    <section class="seccionFormulario">
+        <h2>Iniciar sesión</h2>
+        <h4>Ingrese con sus datos</h4>
+        <form method="POST" action="/inicioSesion" id="form-registro" class="formulario">
+            <div>
+                <input type="text" placeholder="Nombre de usuario" id="usuario" name="usuario" required>
+                <!-- Error de usuario si no está registrado -->
+                {{#if errorUsuario}}
+                    <p id="error-usuario" class="error">{{errorUsuario}}</p>
+                {{/if}}
+            </div>
+
+            <div>
+                <input type="password" name="contrasenia" id="contrasenia" placeholder="Contraseña" required>
+                <!-- Error de contraseña si es incorrecta -->
+                {{#if errorContrasenia}}
+                    <p id="error-password" class="error">{{errorContrasenia}}</p>
+                {{/if}}
+            </div>
+
+            <button type="submit">Iniciar sesión</button>
+        </form>
+
+        <div class="noCumple">
+            <p>¿Todavía no estás registrado?</p>
+            <a class="ayuda" href="/registroPersonaJuridica">Organización jurídica</a>
+            <a class="ayuda" href="/registroPersonaHumana">Voluntariado</a>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <nav>
+        <ul>
+            <li><a href="/termino">Términos y condiciones</a></li>
+            <li><a href="/preguntasFrecuentes">Preguntas frecuentes</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    <a href="#" class="scroll-to-top" aria-label="Subir al inicio">
+        <img src="../assets/img/flecha-hacia-arriba-blanca.png" alt="Ir arriba flecha">
+    </a>
+</footer>
+
+<script src="js/valida_iniciosesion.js"></script>
+</body>
+</html>

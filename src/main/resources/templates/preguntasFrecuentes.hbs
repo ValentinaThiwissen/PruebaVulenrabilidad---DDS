@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viandas Solidarias | Donaciones</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 80%;
+            max-width: 900px;
+        }
+
+        .question {
+            margin: 15px 0;
+        }
+
+        .question h2 {
+            font-size: 18px;
+            cursor: pointer;
+            color: var(--color-acento);
+            text-align: left;
+        }
+
+        .question p {
+            display: none;
+            font-size: 16px;
+            color: #333;
+            margin-left: 20px;
+            text-align: left;
+        }
+
+        .footer {
+            background-color: #96AFB8;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footer nav ul {
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer nav ul li {
+            margin: 0 10px;
+        }
+
+        .footer nav ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .footer nav ul li a:hover {
+            color: #6b8995;
+        }
+
+        .footer img {
+            width: 30px;
+            margin-top: 20px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #96AFB8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #6b8995;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const questions = document.querySelectorAll('.question h2');
+            questions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    answer.style.display = (answer.style.display === 'block') ? 'none' : 'block';
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+<header class="header">
+    <nav>
+        <a href="/inicio">
+            <img src="../assets/img/logo.png" alt="Logo de Viandas Solidarias" loading="lazy" width="100">
+        </a>
+        <ul>
+        </ul>
+
+    </nav>
+</header>
+
+<main>
+    <section class="content">
+        <div class="card">
+            <h1>Preguntas Frecuentes</h1>
+            <div class="question">
+                <h2>¿Cómo donar?</h2>
+                <p>Para donar, puedes visitar nuestra página de donaciones y seguir las instrucciones proporcionadas.</p>
+            </div>
+            <div class="question">
+                <h2>¿Cuáles son las formas de colaborar?</h2>
+                <p>Puedes colaborar donando alimentos, dinero, o tiempo como voluntario. Cada contribución hace la diferencia.</p>
+            </div>
+            <div class="question">
+                <h2>¿Quién se puede hacer cargo de las heladeras?</h2>
+                <p>Las heladeras pueden ser gestionadas por voluntarios capacitados y organizaciones locales que colaboran con nosotros.</p>
+            </div>
+            <div class="question">
+                <h2>¿Quién recibe las viandas solidarias?</h2>
+                <p>Las viandas solidarias son recibidas por personas en situación de vulnerabilidad, a quienes brindamos apoyo a través de diversas organizaciones.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <nav>
+        <ul>
+            <li><a href="/termino">Términos y condiciones</a></li>
+            <li><a href="/preguntasFrecuentes">Preguntas frecuentes</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    <a href="#" class="scroll-to-top" aria-label="Subir al inicio">
+        <img src="../assets/img/flecha-hacia-arriba-blanca.png" alt="Ir arriba flecha">
+    </a>
+</footer>
+
+</body>
+</html>

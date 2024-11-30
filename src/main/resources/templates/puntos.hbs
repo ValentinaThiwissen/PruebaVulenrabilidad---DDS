@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viandas Solidarias | Vianda para todos</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="../css/estilos.css">
+
+</head>
+<style>
+    .header {
+        height: 14vh;
+        padding: 10px 20px;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+    }
+    .producto-item-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .producto-item {
+        text-align: center;
+        margin: 20px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        width: 300px;
+    }
+
+    input{
+        text-align: center;
+    }
+    form{
+        text-align: center;
+    }
+    button{
+        text-align: center;
+    }
+    .mensaje-falla {
+        color: red;
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.2em;
+        margin-top: 20px;
+    }
+</style>
+<body class="body Interno centrado">
+<header class="header">
+    <nav>
+        <a href="/personaHumana">
+            <img src="../assets/img/logo.png" alt="Logo de Viandas Solidarias" loading="lazy" width="100">
+        </a>
+    </nav>
+    <button class="menu-toggle">☰</button> <!-- Botón de menú -->
+    <nav class="menu">
+        <a href="/colaboraciones">Colaborá</a>
+        <a href="/suscripcionColaborador">Suscribite</a>
+        <a href="/reportarIncidente">Reporta</a>
+        <a href="/perfil">Mi perfil</a>
+        <a href="/cerrarSesion">Cerrar Sesión</a>
+    </nav>
+</header>
+
+<main>
+    <section class="puntos-totales">
+        <h2>Puntos Totales</h2>
+        <div class="cuadro-puntos">
+            <p id="totalPuntos">{{this.puntos}}</p>
+        </div>
+    </section>
+
+    <div class="wrap">
+        <h1>Escoge un producto</h1>
+        <div class="store-wrapper">
+            <div class="categorias">
+                <a href="#" class="categoria_item" ct_item-active data-categoria="all">Todo</a>
+                {{#each rubro}}
+                    <a href="#" class="categoria_item" data-categoria="{{this.nombreRubro}}">{{this.nombreRubro}}</a>
+                {{/each}}
+            </div>
+            <section class="listaProductos">
+                <div class="producto-item-container">
+                    {{#each oferta}}
+                        <div class="producto-item active">
+                            <img src="/assets/img/{{this.imagen}}" alt="Descripción de la imagen 1">
+                            <h3>{{this.nombre}}</h3>
+                            <p>Puntos requeridos: {{this.puntosNecesarios}}</p>
+
+                            <form id="formOculto-{{@index}}" method="POST" action="/puntos">
+                                {{#if solicitudExitosa}}
+                                    <div class="mensaje-falla">{{solicitudExitosa}}</div>
+                                {{/if}}
+                                <button type="submit" class="confirmarCanje">Canjear</button>
+                                <input type="hidden" name="nombreOferta" value="{{this.nombre}}">
+                                <input type="hidden" name="puntos" value="{{this.puntosNecesarios}}">
+                            </form>
+
+                        </div>
+                    {{/each}}
+                </div>
+            </section>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <nav>
+        <ul>
+            <li><a href="/termino">Términos y condiciones</a></li>
+            <li><a href="/preguntasFrecuentes">Preguntas frecuentes</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    <a href="#" class="scroll-to-top" aria-label="Subir al inicio">
+        <img src="../assets/img/flecha-hacia-arriba-blanca.png" alt="Ir arriba flecha">
+    </a>
+</footer>
+<script src="../js/puntos.js"></script>
+<script src="../js/menuDesp.js"></script>
+</body>
+
+</html>

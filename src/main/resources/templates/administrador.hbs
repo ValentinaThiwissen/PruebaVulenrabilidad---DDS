@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viandas Solidarias | Donaciones</title>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+<header class="header">
+    <nav>
+        <a href="/inicio">
+            <img src="../assets/img/logo.png" alt="Logo de Viandas Solidarias" loading="lazy" width="100">
+        </a>
+        <ul>
+            <li>
+                <a href="/cerrarSesion">
+                    <img src="../assets/img/cerrarSesion.png" alt="Cerrar sesión" loading="lazy">
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<main class="main">
+    <section class="personaHumana">
+        <h3>Bienvenido {{nombreUsuario}}!</h3>
+        <h1>Actividades para realizar</h1>
+    </section>
+
+    <section class="section">
+        <div class="actividades">
+            <div class="actividad">
+                <img src="../assets/img/gestionarUsuario.png" alt="Gestionar usuarios">
+                <h3>Gestionar usuarios</h3>
+                <p>Administra y supervisa la información de los usuarios registrados.</p>
+                <button onclick="window.location.href='/gestionarUsuarios'">Gestiona usuarios</button>
+            </div>
+
+            <div class="actividad">
+                <img src="../assets/img/cargaCsv.png" alt="Carga CSV">
+                <h3>Carga CSV</h3>
+                <p>Realiza una migración de datos desde un archivo CSV. </p>
+                <button onclick="window.location.href='/cargar_csv'">Migra tus datos</button>
+            </div>
+
+            <div class="actividad">
+                <img src="../assets/img/gestionarFormulario.png" alt="Gestionar formularios">
+                <h3>Gestionar formularios</h3>
+                <p>Crea y administra formularios para recolectar información valiosa. Añade preguntas personalizadas.</p>
+                <button onclick="window.location.href='/gestionarFormularios'">Gestiona formularios</button>
+            </div>
+
+            <div class="actividad">
+                <img src="../assets/img/visualizarHeladera.png" alt="Visualizar heladeras">
+                <h3>Visualizar heladeras</h3>
+                <p>Observa un listado completo de todas las heladeras solidarias disponibles.</p>
+                <button onclick="window.location.href='/visualizarHeladeras'">Visualiza heladeras</button>
+            </div>
+
+            <div class="actividad">
+                <img src="../assets/img/visualizarReporte.png" alt="Visualizar reportes">
+                <h3>Visualizar reportes</h3>
+                <p>Consulta todos los reportes generados, incluyendo fallas, mantenimientos y actividades.</p>
+                <button onclick="window.location.href='/visualizarReportes'">Visualiza reportes</button>
+            </div>
+
+            <div class="actividad">
+                <img src="../assets/img/visualizarFallas.png" alt="Visualizar incidentes">
+                <h3>Visualizar incidentes</h3>
+                <p>Accede a un resumen detallado de los incidentes y notificaciones importantes.</p>
+                <button onclick="window.location.href='/visualizarIncidentes'">Visualiza fallas</button>
+            </div>
+            <div class="actividad">
+                <img src="../assets/img/visualizarFallas.png" alt="Registrar tecnico">
+                <h3>Registrar un técnico</h3>
+                <p>Carga a un técnico.</p>
+                <button onclick="window.location.href='/registrarTecnico'">Registrar un técnico</button>
+            </div>
+            <div class="actividad">
+                <img src="../assets/img/visualizarFallas.png" alt="Registrar tecnico">
+                <h3>Visualizar visitas técnicas</h3>
+                <p>Visitas técnicas.</p>
+                <button onclick="window.location.href='/visualizarVisitasTecnicas'">Visualizar visitas técnicas</button>
+            </div>
+
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <nav>
+        <ul>
+            <li><a href="/termino">Términos y condiciones</a></li>
+            <li><a href="/preguntasFrecuentes">Preguntas frecuentes</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    <a href="#" class="scroll-to-top" aria-label="Subir al inicio">
+        <img src="../assets/img/flecha-hacia-arriba-blanca.png" alt="Ir arriba flecha">
+    </a>
+</footer>
+<script src="../js/colaboracionesPHumana.js"></script>
+</body>
+</html>

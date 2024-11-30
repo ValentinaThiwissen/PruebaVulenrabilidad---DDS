@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viandas Solidarias | Donaciones</title>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        .header {
+            height: 14vh;
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+        }
+        .nueva-colaboracion {
+            width: 100%;
+            max-width: 500px;
+            margin: auto;
+        }
+        .add-producto-btn {
+            background-color: #008CBA;
+            margin-top: 10px;
+        }
+        .producto-grupo {
+            display: flex;
+            flex-direction: column;
+        }
+        .producto-grupo input {
+            margin-bottom: 5px;
+        }
+        /* Ocultar formularios inicialmente */
+        .hidden-form {
+            display: none;
+        }
+        /* Mostrar el formulario cuando se selecciona */
+        .dynamic-form.active {
+            display: block;
+        }
+        .nueva-colaboracion select,
+        .nueva-colaboracion input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        .heladera-grupo, .motivo-grupo, .producto-grupo {
+            margin-bottom: 20px;
+        }
+        .submit-btn {
+            background-color: #96AFB8; /* Color de fondo del botón */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-btn:hover {
+            background-color: #7d9da8; /* Cambia de color al pasar el mouse */
+        }
+
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <nav>
+        <a href="/personaHumana">
+            <img src="../assets/img/logo.png" alt="Logo de Viandas Solidarias" loading="lazy" width="100">
+        </a>
+    </nav>
+    <button class="menu-toggle">☰</button> <!-- Botón de menú -->
+    <nav class="menu">
+        <a href="/suscripcionColaborador">Suscribite</a>
+        <a href="/puntos">Canjeá</a>
+        <a href="/reportarIncidente">Reporta</a>
+        <a href="/perfil">Mi perfil</a>
+        <a href="/cerrarSesion">Cerrar Sesión</a>
+    </nav>
+</header>
+<main id="main" class="main">
+    <section class="personaHumana" id="personaHumana" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="personaHumana">
+            <h1>Bienvenido voluntario!</h1>
+            <h3>Selecciona cómo prefieres colaborar hoy:</h3>
+            {{#if solicitudRechazada}}
+                <div class="error-message">{{sinTecnico}}</div>
+            {{/if}}
+        </div>
+
+        <div class="colaboraciones">
+            {{#if puedeDonarDinero}}
+                <div class="colaboracion" data-form="donacionMonetaria" onclick="showForm('donacionMonetaria')">
+                    <div class="overlay">Donar dinero</div>
+                    <img src="../assets/img/colaborarDinero.jpg" alt="Donar dinero">
+                </div>
+            {{/if}}
+
+            {{#if puedeDistribuirVianda}}
+                <div class="colaboracion" data-form="distribucionVianda" onclick="showForm('distribucionVianda')">
+                    <div class="overlay">Distribuir viandas</div>
+                    <img src="../assets/img/colaborarDistV.jpg" alt="Distribuir viandas">
+                </div>
+            {{/if}}
+
+            {{#if puedeDonarVianda}}
+                <div class="colaboracion" data-form="donacionVianda" onclick="showForm('donacionVianda')">
+                    <div class="overlay">Donar viandas</div>
+                    <img src="../assets/img/colaborarDonarV.jpg" alt="Donar viandas">
+                </div>
+            {{/if}}
+
+            {{#if puedeRegistrarPersonas}}
+                <div class="colaboracion" data-form="registroPersonaVulnerable" onclick="showForm('registroPersonaVulnerable')">
+                    <div class="overlay">Registrar personas vulnerables</div>
+                    <img src="../assets/img/colaborarRPV.jpg" alt="Registrar personas vulnerables">
+                </div>
+            {{/if}}
+
+            {{#if puedeEncargarHeladera}}
+                <div class="colaboracion" data-form="encargoHeladera" onclick="showForm('encargoHeladera')">
+                    <div class="overlay">Encargo heladera</div>
+                    <img src="../assets/img/encargoheladera.png" alt="Encargo heladera">
+                </div>
+            {{/if}}
+
+            {{#if puedeOfrecerProductos}}
+                <div class="colaboracion" data-form="ofrecerProductos" onclick="showForm('ofrecerProductos')">
+                    <div class="overlay">Ofrecer productos</div>
+                    <img src="../assets/img/ofrecerProductos.jpg" alt="Ofrecer productos">
+                </div>
+            {{/if}}
+        </div>
+
+        <div id="dynamicFormContainer" class="dynamic-form">
+            <!-- Aquí se mostrará el formulario seleccionado -->
+        </div>
+
+        <div>
+            <form id="donacionMonetaria" action="/colaboraciones" class="hidden-form" method="POST">
+                <div class="nueva-colaboracion">
+                    <h2>Donación Monetaria</h2>
+                    <label>Elige el monto que quieras donar:</label>
+                    <select name="monto_donacion" required>
+                        <option value="1000">1.000</option>
+                        <option value="5000">5.000</option>
+                        <option value="10000">10.000</option>
+                        <option value="50000">50.000</option>
+                        <option value="100000">100.000</option>
+                    </select>
+
+                    <label>Elige la frecuencia:</label>
+                    <select name="periodo" required>
+                        <option value="SEMANALMENTE">Semanalmente</option>
+                        <option value="MENSUALMENTE">Mensualmente</option>
+                        <option value="ANUALMENTE">Anualmente</option>
+                    </select>
+
+                    <label>Elige cuántas veces desea donar en base a la frecuencia elegida:</label>
+                    <textarea name="repeticion" placeholder="Repeticion" required></textarea>
+
+                    <label>Elige el medio de pago:</label>
+                    <select name="medioPago" required>
+                        <option value="credito">Crédito</option>
+                        <option value="debito">Débito</option>
+                    </select>
+                    <textarea name="numeroTarjeta" placeholder="Número de tarjeta" required></textarea>
+                    <button type="submit" name="action" value="donacionMonetaria">DONAR</button>
+                </div>
+            </form>
+
+            <form id="donacionVianda" action="/colaboraciones" class="hidden-form" method="POST">
+                <div class="nueva-colaboracion">
+                    <h2>Donación de Viandas</h2>
+                    <label>Elige la cantidad de viandas a donar:</label>
+                    <select name="cantidad" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                    </select>
+                    <div class="vianda-container" id="vianda-container">
+                        <label>Contenido Vianda:</label>
+                        <div class="producto-grupo">
+                            <input name="nombreComida" placeholder="Descripción de comida" required>
+                            <input name="peso" placeholder="Peso">
+                            <input name="calorias" placeholder="Calorias">
+                            <input type="date" name="caducidad"placeholder="Fecha de caducidad de la vianda">
+                        </div>
+                    </div>
+                    <!-- <button type="button" class="add-producto-btn" id="addViandaBtn">Agregar otra vianda</button>
+                    <p class="producto-limite" style="color:red; display:none;">Máximo de 10 viandas alcanzado</p> -->
+                    <div>
+                        <label for="heladera">Seleccionar heladera destino:</label>
+                        <select name="heladera" id="heladera" required>
+                            {{#each heladeras}}
+                                <option value="{{this.id}}">{{this.nombreHeladera}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <button type="submit" name="action" value="donacionViandas">DONAR</button>
+                </div>
+            </form>
+
+            <form method="POST" action="/colaboraciones" class="hidden-form" id="registroPersonaVulnerable">
+                <div class="nueva-colaboracion">
+                    <h2>Registro Persona</h2>
+                    <div>
+                        <input type="text" name="nombre" id="nombre" placeholder="Nombre" required>
+                        <input type="text" name="apellido" id="apellido" placeholder="Apellido" required>
+                    </div>
+                    <div>
+                        <label>Ingrese el tipo de documento</label>
+                        <select name="tipo_documento" id="tipo_documento">
+                            <option value="DNI" selected>DNI</option>
+                            <option value="LIBRETAENROLAMIENTO">Libreta enrolamiento</option>
+                            <option value="LIBRETACIVICA">Libreta civica</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input type="text" name="documento" id="documento" placeholder="Documento" required>
+                    </div>
+                    <div>
+                        <label>Ingrese fecha de nacimiento</label>
+                        <input type="date" name="nacimiento" id="nacimiento" required>
+                    </div>
+                    <label>Ingrese su direccion(si tiene)</label>
+                    <div>
+                        <input type="text" name="localidad" id="localidad" placeholder="Localidad">
+                    </div>
+                    <div>
+                        <input type="text" name="calle" id="calle" placeholder="Calle">
+                    </div>
+                    <div>
+                        <input type="number" name="altura" id="altura" placeholder="Altura">
+                    </div>
+                    <div>
+                        <input type="text" name="partido" id="partido" placeholder="Partido">
+                    </div>
+                    <div>
+                        <input type="text" name="provincia" id="provincia" placeholder="Provincia">
+                    </div>
+                    <label>¿Tienes menores a cargo?</label>
+                    <select name="menor" id="menor" required onchange="toggleMenoresFields()">
+                        <option value="NO">NO</option>
+                        <option value="SI">SI</option>
+                    </select>
+
+                    <div id="menoresContainer" style="display:none;">
+                        <input type="text" name="nombreMenor[]" placeholder="Nombre del menor">
+                        <input type="text" name="apellidoMenor[]" placeholder="Apellido del menor">
+                        <div>
+                            <label>Ingrese el tipo de documento</label>
+                            <select name="tipo_documento_menor[]">
+                                <option value="DNI" selected>DNI</option>
+                                <option value="LIBRETAENROLAMIENTO">Libreta enrolamiento</option>
+                                <option value="LIBRETACIVICA">Libreta civica</option>
+                            </select>
+                        </div>
+                        <input type="text" name="documentoMenor[]" placeholder="Documento del menor">
+                        <input type="date" name="nacimientoMenor[]" placeholder="Fecha de nacimiento">
+                        <button type="button" class="removeMenorBtn" onclick="removeMenor(this)">Eliminar</button>
+
+                        <button type="button" id="addMenorBtn" onclick="addMenor()">Agregar menor</button>
+                        <div id="menoresList"></div>
+                    </div>
+                    <button type="submit" name="action" value="registroPersonaVulnerable">REGISTRAR</button>
+                </div>
+            </form>
+
+            <form method="POST" action="/colaboraciones" id="ofrecerProductos" class="hidden-form formulario" enctype="multipart/form-data">
+                <div class="nueva-colaboracion">
+                    <h2>Ofrecer productos y/o servicios</h2>
+                    <div class="form-group">
+                        <input name="nombreOferta" id="nombreOferta" placeholder="Nombre de la oferta" required>
+                    </div>
+                    <div class="form-group">
+                        <input name="puntosNecesarios" id="puntosNecesarios" placeholder="Puntos necesarios" required>
+                    </div>
+                    <div id="oferta-container">
+                        <label>Productos a ofrecer:</label>
+                        <div class="oferta-grupo">
+                            <input name="nombreProducto[]" placeholder="Nombre del producto" required>
+                        </div>
+                    </div>
+                    <p class="oferta-limite" style="color:red; display:none;">Máximo de 5 productos alcanzado</p>
+                    <button type="button" class="add-producto-btn" id="add-producto-btn" onclick="addProducto()">Agregar otro producto</button>
+
+                    <div class="form-group">
+                        <label>Ingrese el rubro en el que desea publicar productos:</label>
+                        <select id="rubroSelect" name="tipoRubro" class="tipo_rubro" required>
+                            <option value="tecnologia">Tecnología</option>
+                            <option value="alimentacion">Alimentación</option>
+                            <option value="ropa">Ropa</option>
+                            <option value="librerias">Librería</option>
+                            <option value="otros">Otros</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="file" name="imagen" id="imagen" required>
+                    </div>
+                    <button type="submit" name="action" value="ofrecerProductos">PUBLICAR</button>
+                </div>
+            </form>
+
+
+            <form method="POST" action="/colaboraciones" class="hidden-form" id="distribucionVianda">
+                <div class="nueva-colaboracion">
+                    <h2>Distribución de Viandas</h2>
+                    <div>
+                        <label for="heladeraOrigen">Seleccionar heladera origen:</label>
+                        <select name="heladeraOrigen" id="heladeraOrigen" required>
+                            {{#each heladeras}}
+                                <option value="{{this.id}}">{{this.nombreHeladera}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+
+                    <div class="heladera-container" id="heladera-container">
+                        <div class="heladera-grupo">
+                            <label for="heladera">Seleccionar heladera destino:</label>
+                            <select name="heladera[]" class="heladera" required>
+                                {{#each heladeras}}
+                                    <option value="{{this.id}}">{{this.nombreHeladera}}</option>
+                                {{/each}}
+                            </select>
+
+                            <label for="cantidad">Elige la cantidad de viandas a distribuir:</label>
+                            <select name="cantidad[]" class="cantidad" required>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <p class="producto-limite" style="color:red; display:none;">Máximo de 5 heladeras destino alcanzado</p>
+                    <button type="button" id="addHeladeraBtn" class="submit-btn" onclick="addHeladera()">Agregar heladera de destino</button>
+
+                    <div class="motivo-grupo">
+                        <label for="motivo">Motivo de distribución:</label>
+                        <select name="motivo" id="motivo" required>
+                            <option value="DESPERFECTO_HELADERA">Desperfecto heladera</option>
+                            <option value="FALTA_VIANDAS">Faltan viandas</option>
+                            <option value="SOBRAN_VIANDAS">Sobran viandas</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" name="action" value="distribucionVianda">DISTRIBUIR</button>
+                </div>
+
+            </form>
+            <form id="encargoHeladera" action="/colaboraciones" class="hidden-form" method="POST">
+                <div class="nueva-colaboracion">
+                    <h2>Encargo Heladera</h2>
+                    <div>
+                        <input type="text" name="heladera" class="heladera" placeholder="Nombre de la heladera" required>
+                    </div>
+                    <div>
+                        <label for="modelo">Seleccionar modelo:</label>
+                        <select name="modelo" id="modelo" required>
+                            {{#each modelos}}
+                                <option value="{{this.id}}" data-min="{{this.temperaturaMinima}}" data-max="{{this.temperaturaMaxima}}">{{this.nombreModelo}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div>
+                        <input type="text" name="minima" id="minima" placeholder="Temperatura mínima" readonly>
+                    </div>
+                    <div>
+                        <input type="text" name="maxima" id="maxima" placeholder="Temperatura máxima" readonly>
+                    </div>
+                    <div>
+                        <input type="text" name="capacidad" class="capacidad" placeholder="Capacidad de la heladera" required>
+                    </div>
+
+                    <div>
+                        <input type="text" name="localidad" id="localidad" placeholder="Localidad">
+                    </div>
+                    <div>
+                        <input type="text" name="partido" id="partido" placeholder="Partido">
+                    </div>
+                    <div>
+                        <input type="text" name="provincia" id="provincia" placeholder="Provincia">
+                    </div>
+                    <div>
+                        <input type="text" name="altura" id="altura" placeholder="Altura">
+                    </div>
+                    <div>
+                        <input type="text" name="calle" id="calle" placeholder="Calle">
+                    </div>
+                    <button type="submit" name="action" value="encargoHeladera">ENCARGAR</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <nav>
+        <ul>
+            <li><a href="/termino">Términos y condiciones</a></li>
+            <li><a href="/preguntasFrecuentes">Preguntas frecuentes</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    <a href="#" class="scroll-to-top" aria-label="Subir al inicio">
+        <img src="../assets/img/flecha-hacia-arriba-blanca.png" alt="Ir arriba flecha">
+    </a>
+</footer>
+<script src="../js/agregarProd.js"></script>
+<script src="../js/modelo.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script src="../js/formularioColaborar.js"></script>
+<script src="../js/menores.js"></script>
+<script src="../js/menuDesp.js"></script>
+
+</body>
+</html>

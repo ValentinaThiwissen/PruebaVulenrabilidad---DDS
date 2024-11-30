@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <title>Carga CSV| Viandas Solidarias</title>
+    <style>
+        .container {
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           gap: 10px;
+       }
+
+       #cargar_csv {
+           background-color: #4CAF50;
+           color: white;
+           border: none;
+           padding: 10px 20px;
+           text-align: center;
+           text-decoration: none;
+           display: flex;
+           font-size: 16px;
+           margin-top: 10px;
+           cursor: pointer;
+           border-radius: 5px;
+       }
+
+       #cargar_csv:hover {
+           background-color: #45a049;
+       }
+
+       #error-message {
+           display: none;
+           color: red;
+           margin-top: 10px;
+       }
+    </style>
+
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+    <nav>
+        <a href="/administrador">
+            <img src="../assets/img/logo.png" alt="Logo de Viandas Solidarias" loading="lazy" width="100">
+        </a>
+        <ul>
+            <li>
+                <a href="/cerrarSesion">
+                    <img src="../assets/img/cerrarSesion.png" alt="Cerrar sesión" loading="lazy">
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <section>
+        <div class="cargaMasiva">
+            <h1>Carga de CSV de Colaboraciones</h1>
+        </div>
+        <div class="cargarDatos">
+            <h4>Selecciona un archivo CSV para cargar:</h4>
+            <div id="cargaMasivaDiv" class="container">
+                <label for="csvfile" class="formatoCargaMasiva">
+                    <img src="../assets/img/cargaCsv.png" alt="CSV Icon" id="csv-icon">
+                    <input type="file" id="csvfile" accept=".csv" hidden>
+                    <span id="csv-filename">Selecciona un archivo...</span>
+                </label>
+                <button type="button" id="cargar_csv" class="btn-cargar">Cargar</button>
+                <div id="error-message" class="error">Por favor, selecciona un archivo CSV.</div>
+            </div>
+        </div>
+    </section>
+
+</main>
+<footer class="footer">
+    <nav>
+        <ul>
+            <li><a href="/termino">Términos y condiciones</a></li>
+            <li><a href="/preguntasFrecuentes">Preguntas frecuentes</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+        </ul>
+    </nav>
+</footer>
+<script src="../js/cargaMasiva.js"></script>
+</body>
+
+</html>

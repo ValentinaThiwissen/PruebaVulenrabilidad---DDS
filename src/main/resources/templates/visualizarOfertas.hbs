@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <style>
+        .header {
+            height: 14vh;
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+
+    <title>Mis Ofertas | Viandas Solidarias</title>
+</head>
+
+<body class="body Interno centrado">
+
+<header class="header">
+    <nav>
+        <a href="/personaHumana">
+            <img src="../assets/img/logo.png" alt="Logo de Viandas Solidarias" loading="lazy" width="100">
+        </a>
+    </nav>
+    <button class="menu-toggle">☰</button> <!-- Botón de menú -->
+    <nav class="menu">
+        <a href="/colaboraciones">Colaborá</a>
+        <a href="/suscripcionColaborador">Suscribite</a>
+        <a href="/puntos">Canjeá</a>
+        <a href="/reportarIncidente">Reporta</a>
+        <a href="/perfil">Mi perfil</a>
+        <a href="/cerrarSesion">Cerrar Sesión</a>
+    </nav>
+</header>
+<main>
+    <div class="canjes-container">
+        <h1>Mis ofertas</h1>
+        <section class="listaCanjes">
+            <div class="canje-item-container">
+                {{#each oferta}}
+                    <div class="producto-item">
+                        <img src="/assets.img/uploads/{{this.imagen}}" alt="Imagen de {{this.nombre}}">
+                        <h3>{{this.nombre}}</h3>
+                        <p>Puntos requeridos: {{this.puntosNecesarios}}</p>
+                    </div>
+                {{/each}}
+        </div>
+        </section>
+    </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <nav>
+        <ul>
+            <li><a href="/termino">Términos y condiciones</a></li>
+            <li><a href="/preguntasFrecuentes">Preguntas frecuentes</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    <a href="#" class="scroll-to-top" aria-label="Subir al inicio">
+        <img src="../assets/img/flecha-hacia-arriba-blanca.png" alt="Ir arriba flecha">
+    </a>
+</footer>
+<script src="../js/menuDesp.js"></script>
+</body>
+</html>

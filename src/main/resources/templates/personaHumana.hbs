@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viandas Solidarias | Donaciones</title>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+<header class="header">
+    <nav>
+        <a href="/personaHumana">
+            <img src="../assets/img/logo.png" alt="Logo de Viandas Solidarias" loading="lazy" width="100">
+        </a>
+        <ul>
+            <li><a href="/perfil">Mi perfil</a></li>
+            <li>
+                <a href="/cerrarSesion">
+                    <img src="../assets/img/cerrarSesion.png" alt="Cerrar sesión" loading="lazy">
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<main class="main">
+    <section class="personaHumana">
+        <h3>Bienvenido {{nombreUsuario}}!</h3>
+        <h1>Actividades para realizar:</h1>
+        <p>En esta sección podrás realizar diversas actividades para colaborar y aprovechar nuestros servicios.</p>
+    </section>
+
+    <section class="section">
+        <div class="actividades">
+            <div class="actividad">
+                <img src="../assets/img/reportarFalla.png" alt="Reportar incidente técnico">
+                <h3>Reportar incidente técnico</h3>
+                <p>Reporta cualquier falla técnica en las heladeras solidarias para mejorar su funcionamiento.</p>
+                <button onclick="window.location.href='/reportarIncidente'">Reporta</button>
+            </div>
+
+            <div class="actividad">
+                <img src="../assets/img/suscripcionHeladera.png" alt="Suscribite a heladeras">
+                <h3>Suscribite a heladeras</h3>
+                <p>Suscribite para recibir notificaciones sobre el estado de las heladeras cercanas a ti.</p>
+                <button onclick="window.location.href='/suscripcionColaborador'">Suscribite</button>
+            </div>
+
+            <div class="actividad">
+                <img src="../assets/img/cambioPuntos.png" alt="Canjea tus puntos">
+                <h3>Canjea tus puntos</h3>
+                <p>Acumula puntos por tus colaboraciones y canjealos por beneficios exclusivos.</p>
+                <button onclick="window.location.href='/puntos'">Canjea</button>
+            </div>
+
+            <div class="actividad">
+                <img src="../assets/img/solicitudApertura.png" alt="Solicitá apertura heladera">
+                <h3>Solicitá apertura heladera</h3>
+                <p>Solicita la apertura de nuevas heladeras solidarias en tu comunidad.</p>
+                <button onclick="window.location.href='/registroApertura'">Solicita!</button>
+            </div>
+
+            <div class="actividad">
+                <img src="../assets/img/registroColaboracion.png" alt="Registra nueva colaboración">
+                <h3>Registra nueva colaboración</h3>
+                <p>Colabora con tu tiempo o recursos y ayuda a quienes más lo necesitan.</p>
+                <button onclick="window.location.href='/colaboraciones'">Colabora!</button>
+            </div>
+
+            <div class="actividad">
+                <img src="../assets/img/visualizarFallas.png" alt="Visualizar incidentes">
+                <h3>Visualizar canjes</h3>
+                <p>Podrás visualizar las ofertas que canjeaste.</p>
+                <button onclick="window.location.href='/visualizarCanjes'">Visualiza</button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <nav>
+        <ul>
+            <li><a href="/termino">Términos y condiciones</a></li>
+            <li><a href="/preguntasFrecuentes">Preguntas frecuentes</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    <a href="#" class="scroll-to-top" aria-label="Subir al inicio">
+        <img src="../assets/img/flecha-hacia-arriba-blanca.png" alt="Ir arriba flecha">
+    </a>
+</footer>
+<script src="../js/colaboracionesPHumana.js"></script>
+</body>
+</html>

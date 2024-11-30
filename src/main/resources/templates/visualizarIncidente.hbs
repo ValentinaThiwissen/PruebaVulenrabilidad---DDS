@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <style>
+        .header {
+            height: 14vh;
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+    <title>Incidentes Heladera| Viandas Solidarias</title>
+</head>
+
+<body class="body Interno centrado">
+
+<header class="header">
+    <nav>
+        <a href="/administrador">
+            <img src="../assets/img/logo.png" alt="Logo de Viandas Solidarias" loading="lazy" width="100">
+        </a>
+        <ul>
+            <li>
+                <a href="/cerrarSesion">
+                    <img src="../assets/img/cerrarSesion.png" alt="Cerrar sesión" loading="lazy">
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+    <main>
+        <h1>Lista de Incidentes</h1>
+        <table>
+            <thead>
+            <tr>
+                <th>Descripción</th>
+                <th>Heladera</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Tipo de Falla</th>
+                <th>Colaborador que reporto</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each incidente}}
+                <tr>
+                    <td>{{this.descripcion}}</td>
+                    <td>{{this.heladeraIncidente.nombreHeladera}}</td>
+                    <td>{{this.fechaIncidente}}</td>
+                    <td>{{this.horaIncidente}}</td>
+                    <td>{{this.tipoIncidente}}</td>
+                    <td>{{this.colaboradorQueReporto.nombre}}</td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </main>
+    <footer class="footer">
+        <nav>
+            <ul>
+                <li><a href="/termino">Términos y condiciones</a></li>
+                <li><a href="/preguntasFrecuentes">Preguntas frecuentes</a></li>
+                <li><a href="/contacto">Contacto</a></li>
+            </ul>
+        </nav>
+        <a href="#" class="scroll-to-top" aria-label="Subir al inicio">
+            <img src="../assets/img/flecha-hacia-arriba-blanca.png" alt="Ir arriba flecha">
+        </a>
+    </footer>
+    <script src="alertasHeladera.js"></script> <!-- Link al archivo -->
+</body>
+
+</html>

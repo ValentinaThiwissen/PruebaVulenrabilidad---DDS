@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse | Viandas Solidarias</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/estilos.css">
+
+    <style>
+        .mensaje-exito {
+            color: green;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body class="bodyRegistrarse">
+<header class="header">
+    <nav>
+        <a href="/administrador">
+            <img src="../assets/img/logo.png" alt="Logo de Viandas solidarias" loading="lazy" width="100">
+        </a>
+    </nav>
+</header>
+<main>
+    <section class="seccionFormulario">
+        <h2>Registro técnico</h2>
+        <h4>Ingrese sus datos</h4>
+        {{#if solicitudExitosa}}
+            <div class="mensaje-exito">{{tecnicoResgistrado}}</div>
+        {{/if}}
+        <form method="POST" action =/registrarTecnico id="form-registro" class="formulario">
+            <div>
+                <input type="text" name="nombre" id ="nombre" placeholder="Nombre" required>
+            </div>
+            <div>
+                <input type="text" name="apellido" id ="apellido" placeholder="Apellido" required>
+            </div>
+            <div>
+                <p>Ingrese el tipo de documento</p>
+                <select name="tipo_documento" id="tipo_documento">
+                    <option value="DNI" selected>DNI</option>
+                    <option value="LIBRETAENROLAMIENTO">Libreta enrolamiento</option>
+                    <option value="LIBRETACIVICA">Libreta civica</option>
+                </select>
+            </div>
+            <div>
+                <input type="text" name="documento" id="dni" placeholder="documento">
+            </div>
+            <div>
+                <input type="text" name="cuil" id="cuil" placeholder="CUIL">
+            </div>
+
+            <div>
+                <input type="text" name="mail" id="mail" placeholder="ejemplo@mail.com">
+            </div>
+
+            <div id="contacto-container">
+                <h4>Medios de Contacto:</h4>
+
+                <div class="contacto-grupo">
+                    <div>
+                        <select name="tipo_contacto[]" class="tipo_contacto" required>
+                            <option value="Whatsapp">Whatsapp</option>
+                            <option value="Telefono">Teléfono</option>
+                            <option value="Telegram">Telegram</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input type="text" name="contacto[]" class="contacto" placeholder="Contacto" required>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" id="add-contacto-btn">+</button>
+            <p id="contacto-limite" style="color:red; display:none;">Máximo de 5 contactos alcanzado</p>
+
+            <div>
+                <input type="text" name="localidad" id="localidad" placeholder="Localidad">
+            </div>
+            <div>
+                <input type="text" name="partido" id="partido" placeholder="Partido">
+            </div>
+            <div>
+                <input type="text" name="provincia" id="provincia" placeholder="Provincia">
+            </div>
+            <div>
+                <input type="text" name="altura" id="altura" placeholder="Altura">
+            </div>
+            <div>
+                <input type="text" name="calle" id="calle" placeholder="Calle">
+            </div>
+
+            <div>
+                <input type="text" name="radio" id="radio" placeholder="Radio de Cobertura (en kilometros)">
+            </div>
+
+            <div>
+                <input type="text" name="usuario" id ="usuario" placeholder="Nombre de usuario"required>
+            </div>
+            <div>
+                <input type="password" name="contrasenia" id="contrasenia" placeholder="Contraseña" required>
+            </div>
+            <button type="submit">Registrarse</button>
+
+        </form>
+
+    </section>
+
+</main>
+
+<footer class="footer">
+    <nav>
+        <ul>
+            <li><a href="/termino">Términos y condiciones</a></li>
+            <li><a href="/preguntasFrecuentes">Preguntas frecuentes</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    <a href="#" class="scroll-to-top" aria-label="Subir al inicio">
+        <img src="../assets/img/flecha-hacia-arriba-blanca.png" alt="Ir arriba flecha">
+    </a>
+</footer>
+<script src="../js/registroPersonaHumana.js"></script>
+</body>
+</html>

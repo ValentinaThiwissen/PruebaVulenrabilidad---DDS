@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viandas Solidarias | Donaciones</title>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <style>
+        /* estilos.css */
+        .mensaje-canjeRealizado {
+            text-align: center; /* Centrar el texto */
+            margin: 150px auto; /* Mayor separación desde arriba */
+            padding: 50px; /* Más espacio interno */
+            background-color: #daecf2; /* Color amarillo pastel alegre */
+            border: 2px solid #96AFB8; /* Borde más fuerte y alegre */
+            border-radius: 15px; /* Bordes más redondeados */
+            width: 80%; /* Aumentar el ancho de la tarjeta */
+            max-width: 800px; /* Aumentar el ancho máximo */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra más marcada para dar profundidad */
+            animation: aparecer 1s ease-in-out; /* Animación para hacerla aparecer con suavidad */
+        }
+        .mensaje-canjeRealizado {
+            color: #65909f; /* Color del texto vibrante */
+            font-size: 2.5em; /* Aumentar tamaño de letra más grande */
+        }
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <nav>
+        <a href="/personaHumana">
+            <img src="../assets/img/logo.png" alt="Logo de Viandas Solidarias" loading="lazy" width="100">
+        </a>
+        <ul>
+            <li><a href="/crearReporte">Reportes</a></li>
+            <li><a href="/puntos">Puntos</a></li>
+            <li><a href="/alertasHeladera">Alertas</a></li>
+            <li><a href="/perfil">Mi Perfil</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main id="main" class="main">
+    <section>
+        <div id="canjeRealizado" class="mensaje-canjeRealizado">
+            <h2>¡El canje se ha realizado con éxito!</h2>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <nav>
+        <ul>
+            <li><a href="/termino">Términos y condiciones</a></li>
+            <li><a href="/preguntasFrecuentes">Preguntas frecuentes</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+        </ul>
+    </nav>
+</footer>
+</body>
+</html>

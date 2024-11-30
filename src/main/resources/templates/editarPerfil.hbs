@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiPerfil | Vianda para todos</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+
+<body class="bodyInterno centrado">
+
+<!-- HEADER -->
+<header class = "header">
+    <nav>
+        <a href="/inicioSesion">
+            <img src="../assets/img/logo.png" alt="Logo de Viandas Solidarias" loading="lazy" width="100">
+        </a>
+        <ul>
+            <li>
+                <a href="/cerrarSesion">
+                    <img src="../assets/img/cerrarSesion.png" alt="Cerrar sesión" loading="lazy">
+                </a>
+            </li>
+        </ul>
+
+    </nav>
+</header>
+
+<main>
+    <section class ="mi-perfil">
+        <h1>Editar perfil</h1>
+        <div class="sostenedor_de_campos">
+            <form method="POST" action="/perfil">
+                <div class="campo" data-campo="nombre">
+                    <label for="nombre">Nombre:</label>
+                    <div class="campo-editable">
+                        <input type="nombre" class="input-text" name="nombre" value="{{colaborador.nombre}}" id="nombre" >
+                    </div>
+                </div>
+
+                <div class="campo" data-campo="email">
+                    <label for="apellido">Apellido:</label>
+                    <div class="campo-editable">
+                        <input type="apellido" class="input-text" name="apellido" value="{{colaborador.apellido}}" id="apellido" >
+                    </div>
+                </div>
+
+                <div class="campo" data-campo="email">
+                    <label for="email">Email:</label>
+                    <div class="campo-editable">
+                        <input type="email" class="input-text" name="email" value="{{colaborador.email}}" id="email" >
+                    </div>
+                </div>
+
+                <button type="submit" class="botonCargarDatos2" id="botonGuardar" >Guardar</button>
+            </form>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <nav>
+        <ul>
+            <li><a href="/termino">Términos y condiciones</a></li>
+            <li><a href="/preguntasFrecuentes">Preguntas frecuentes</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    <a href="#" class="scroll-to-top" aria-label="Subir al inicio">
+        <img src="../assets/img/flecha-hacia-arriba-blanca.png" alt="Ir arriba flecha">
+    </a>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="editarPerfil.js"></script>
+</body>
+
+</html>

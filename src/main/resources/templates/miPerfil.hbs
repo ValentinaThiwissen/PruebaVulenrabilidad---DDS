@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiPerfil | Vianda para todos</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+
+<body class="bodyInterno centrado">
+
+<!-- HEADER -->
+<header class = "header">
+    <nav>
+        <a href="/inicioSesion">
+            <img src="../assets/img/logo.png" alt="Logo de Viandas Solidarias" loading="lazy" width="100">
+        </a>
+        <ul>
+            <li>
+                <a href="/cerrarSesion">
+                    <img src="../assets/img/cerrarSesion.png" alt="Cerrar sesión" loading="lazy">
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class ="mi-perfil">
+        <h1>Perfil</h1>
+        <div class="sostenedor_de_campos">
+
+            {{#if tipoColaborador}}
+                <div class="campo" data-campo="tipoColaborador">
+                    <label for="tipoColaborador">Tipo de Colaborador:</label>
+                    <span class="input-text">{{colaborador.tipoColaborador}}</span>
+                </div>
+            {{/if}}
+            {{#if nombreUsuario}}
+                <div class="campo" data-campo="nombreUsuario">
+                    <label for="nombreUsuario">Nombre usuario:</label>
+                    <span class="input-text">{{colaborador.nombreUsuario}}</span>
+                </div>
+            {{/if}}
+            {{#if nombre}}
+                <div class="campo" data-campo="nombre">
+                    <label for="nombre">Nombre:</label>
+                    <span class="input-text">{{colaborador.nombre}}</span>
+                </div>
+            {{/if}}
+            {{#if apellido}}
+                <div class="campo" data-campo="apellido">
+                    <label for="apellido">Apellido:</label>
+                    <span class="input-text">{{colaborador.apellido}}</span>
+                </div>
+            {{/if}}
+            {{#if direccion}}
+                <div class="campo" data-campo="direccion">
+                    <label for="direccion">Altura de Dirección:</label>
+                    <span class="input-text">{{colaborador.unaDireccion.altura}}</span>
+                </div>
+            {{/if}}
+            {{#if tipoDni}}
+                <div class="campo" data-campo="tipoDni">
+                    <label for="tipoDni">Tipo de DNI:</label>
+                    <span class="input-text">{{colaborador.tipoDni}}</span>
+                </div>
+            {{/if}}
+            {{#if nroDni}}
+                 <div class="campo" data-campo="nroDni">
+                  <label for="nroDni">Número de DNI:</label>
+                  <span class="input-text">{{colaborador.nroDni}}</span>
+                 </div>
+            {{/if}}
+            {{#if nacimiento}}
+                <div class="campo" data-campo="nacimiento">
+                    <label for="nacimiento">Fecha de Nacimiento:</label>
+                    <span class="input-text">{{colaborador.nacimiento}}</span>
+                </div>
+            {{/if}}
+            {{#if mail}}
+                <div class="campo" data-campo="mail">
+                    <label for="mail">Email:</label>
+                    <span class="input-text">{{colaborador.mail}}</span>
+                </div>
+            {{/if}}
+            {{#if razonSocial}}
+                <div class="campo" data-campo="razonSocial">
+                    <label for="razonSocial"> Razon social: </label>
+                    <span class="input-text">{{colaborador.razonSocial}}</span>
+                </div>
+            {{/if}}
+            {{#if tipoJuridico}}
+                <div class="campo" data-campo="tipoJuridico">
+                    <label for="tipoJuridico">Tipo Juridico:</label>
+                    <span class="input-text">{{colaborador.tipoJuridico}}</span>
+                </div>
+            {{/if}}
+
+            <a href="/perfil/editar" class="botonCargarDatos">Editar</a>
+            </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <nav>
+        <ul>
+            <li><a href="/termino">Términos y condiciones</a></li>
+            <li><a href="/preguntasFrecuentes">Preguntas frecuentes</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+        </ul>
+    </nav>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../js/editarPerfil.js"></script>
+</body>
+
+</html>

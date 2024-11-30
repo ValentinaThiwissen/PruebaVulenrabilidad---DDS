@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viandas Solidarias | Donaciones</title>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <style>
+        .header {
+            height: 14vh;
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <nav>
+        <a href="/administrador">
+            <img src="../assets/img/logo.png" alt="Logo de Viandas Solidarias" loading="lazy" width="100">
+        </a>
+        <ul>
+            <li>
+                <a href="/cerrarSesion">
+                    <img src="../assets/img/cerrarSesion.png" alt="Cerrar sesión" loading="lazy">
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<main class="main">
+    <h1>Visitas Técnicas</h1>
+    <section class="section actividades">
+        {{#each visitasTecnicas}}
+            <div class="actividad">
+                <h3>Fecha de visita: {{this.fechaVisita}}</h3>
+                <p><strong>Descripción del trabajo:</strong> {{this.descripcionTrabajo}}</p>
+                {{#if this.fotoTrabajo}}
+                    <img src="{{this.fotoTrabajo}}" alt="Foto del trabajo realizado" />
+                {{else}}
+                    <p>No hay foto disponible.</p>
+                {{/if}}
+                <p><strong>Solucionado:</strong> {{#if this.solucionadoTrabajo}}Sí{{else}}No{{/if}}</p>
+                <p><strong>Heladera:</strong> {{this.heladeraAArreglar.nombreHeladera}}</p>
+            </div>
+        {{/each}}
+    </section>
+</main>
+
+<footer class="footer">
+    <nav>
+        <ul>
+            <li><a href="/termino">Términos y condiciones</a></li>
+            <li><a href="/preguntasFrecuentes">Preguntas frecuentes</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    <a href="#" class="scroll-to-top" aria-label="Subir al inicio">
+        <img src="../assets/img/flecha-hacia-arriba-blanca.png" alt="Ir arriba flecha">
+    </a>
+</footer>
+
+</body>
+</html>

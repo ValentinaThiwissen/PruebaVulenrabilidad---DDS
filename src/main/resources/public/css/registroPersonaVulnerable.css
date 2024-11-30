@@ -1,0 +1,129 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    width: 100%;
+    background-color:#96AFB8;
+    color: white;
+    padding: 15px 0;
+}
+
+.header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.header nav ul li {
+    margin: 0 10px;
+}
+
+.header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu-container img {
+    width: 50px;
+    height: auto;
+}
+
+main {
+    width: 100%;
+    max-width: 600px;
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+    font-size: 24px;
+}
+
+p {
+    color: #666;
+    font-size: 14px;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario div {
+    margin-bottom: 15px;
+}
+
+.formulario input[type="text"],
+.formulario select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.formulario .terminos {
+    display: flex;
+    align-items: center;
+}
+
+.formulario .terminos input {
+    margin-right: 10px;
+}
+
+.formulario .boton {
+    background-color:#96AFB8;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.formulario .boton:hover {
+    background-color: #96AFB8;
+}
+
+.ayuda {
+    text-align: center;
+    display: block;
+    margin-top: 20px;
+    color:#96AFB8;
+    text-decoration: none;
+}
+
+.ayuda:hover {
+    text-decoration: underline;
+}
+
+<!-- parte de abajo--->
+footer {
+    width: 100%;
+    background-color: #96AFB8;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+}

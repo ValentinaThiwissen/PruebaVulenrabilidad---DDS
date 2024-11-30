@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viandas Solidarias| Donaciones</title>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/estilos.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+
+<body>
+<header class="header">
+    <nav>
+        <a href="#">
+            <img src="assets/img/logo.png" alt="Logo de Viandas Solidarias" loading="lazy" width="100">
+        </a>
+        <ul>
+            <li>
+                <a href="#quienesSomos">QUIÉNES SOMOS</a>
+            </li>
+            <li>
+                <a href="#quieroAyudar">QUIERO AYUDAR</a>
+            </li>
+            <li>
+                <a href="/inicioSesion">INICIAR SESIÓN</a>
+            </li>
+
+        </ul>
+    </nav>
+</header>
+
+<main id="main-index" class="main-index">
+    <div class="carrousel">
+        <div class="grande">
+            <img src="assets/img/ImgCarrousel1.jpg" alt="Descripción de la imagen 1">
+            <img src="assets/img/imgCarrousel2.jpg" alt="Descripción de la imagen 2">
+            <img src="assets/img/imgCarrousel3.jpg" alt="Descripción de la imagen 3">
+            <img src="assets/img/imgCarrousel4.jpg" alt="Descripción de la imagen 4">
+            <img src="assets/img/imgCarrousel5.jpg" alt="Descripción de la imagen 5">
+            <img src="assets/img/imgCarrousel6.jpg" alt="Descripción de la imagen 6">
+        </div>
+        <ul class="puntos">
+            <li class="punto activo"></li>
+            <li class="punto"></li>
+            <li class="punto"></li>
+            <li class="punto"></li>
+            <li class="punto"></li>
+            <li class="punto"></li>
+        </ul>
+    </div>
+
+    <section class="quienesSomos" id="quienesSomos" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="descripcionQuienesSomos">
+            <h1>¿Quiénes Somos?</h1>
+            <p>Formamos una iniciativa nacional que busca contribuir a la mejora de la vulnerabilidad alimentaria, a través
+                de una red de heladeras solidarias y otro tipo de donaciones, comprometidos a proporcionar un acceso equitativo y digno.</p>
+            <p>Al unir fuerzas, estamos construyendo puentes entre personas y comunidades, fortaleciendo la
+                resiliencia y promoviendo la igualdad de oportunidades para todos. Invitamos a todos a unirse a
+                nuestro movimiento solidario y a ayudarnos a construir un futuro donde el acceso digno a los
+                alimentos sea una realidad para cada persona, sin importar su situación.</p>
+            <button onclick="window.location.href = '#quieroAyudar'">Quiero ayudar</button>
+        </div>
+        <div class="imagenQS">
+            <img src="./assets/img/posibleFondo2.png" alt="">
+        </div>
+    </section>
+
+    <hr>
+    <section class="quieroAyudar" id="quieroAyudar" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="eleccionContribuyente">
+            <h1>¿Qué tipo de contribuyente serás?</h1>
+            <nav>
+                <ul>
+                    <li>
+                        <button onclick="window.location.href = '/registroPersonaJuridica'">Organización Jurídica</button>
+                    </li>
+                    <li>
+                        <button onclick="window.location.href ='/registroPersonaHumana'">Voluntariado</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="imagenContribuyente">
+            <img src="assets/img/imgContribuyente.png" alt="Imagen" class="imagenCentrada">
+        </div>
+    </section>
+
+    <section class="mapaHeladeras">
+        <h1>¿Dónde encontrar nuestras heladeras?</h1>
+        <div id="map">
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <nav>
+        <ul>
+            <li><a href="/termino">Términos y condiciones</a></li>
+            <li><a href="/preguntasFrecuentes">Preguntas frecuentes</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    <a href="#" class="scroll-to-top" aria-label="Subir al inicio">
+        <img src="../assets/img/flecha-hacia-arriba-blanca.png" alt="Ir arriba flecha">
+    </a>
+</footer>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="../js/mapa.js"></script>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+<script src="../js/carrousel.js"></script>
+</body>
+</html>

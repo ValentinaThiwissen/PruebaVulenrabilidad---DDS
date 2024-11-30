@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viandas Solidarias | Donaciones</title>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <style>
+        /* estilos.css */
+        .mensaje-agradecimiento {
+            text-align: center;
+            margin: 150px auto;
+            padding: 50px;
+            background-color: #daecf2;
+            border: 2px solid #96AFB8;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 800px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: aparecer 1s ease-in-out;
+        }
+        .mensaje-agradecimiento h2 {
+            color: #65909f; /* Color del texto vibrante */
+            font-size: 2.5em; /* Aumentar tamaño de letra más grande */
+        }
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <nav>
+        <a href="/personaHumana">
+            <img src="../assets/img/logo.png" alt="Logo de Viandas Solidarias" loading="lazy" width="100">
+        </a>
+        <ul>
+            <li><a href="/puntos">Canjea</a></li>
+            <li><a href="/suscripcionColaborador">Suscribite</a></li>
+            <li><a href="/reportarIncidente">Reporta</a></li>
+            <li><a href="/colaboraciones">Colabora</a></li>
+            <li><a href="/perfil">Mi perfil</a></li>
+            <li>
+                <a href="/cerrarSesion">
+                    <img src="../assets/img/cerrarSesion.png" alt="Cerrar sesión" loading="lazy">
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<main id="main" class="main">
+    <section>
+        <!-- Mensaje de agradecimiento más alegre y abajo -->
+        <div id="agradecimiento" class="mensaje-agradecimiento">
+            <h2>¡Muchas gracias por tu colaboración!</h2>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <nav>
+        <ul>
+            <li><a href="/termino">Términos y condiciones</a></li>
+            <li><a href="/preguntasFrecuentes">Preguntas frecuentes</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    <a href="#main">
+        <img src="../assets/img/flecha-hacia-arriba.png" alt="Ir arriba flecha">
+    </a>
+</footer>
+</body>
+</html>

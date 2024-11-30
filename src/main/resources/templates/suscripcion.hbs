@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <style>
+        .header {
+            height: 14vh;
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+    <title>Mis Suscripciones | Viandas Solidarias</title>
+
+</head>
+<body>
+
+<header class="header">
+    <nav>
+        <a href="/personaHumana">
+            <img src="../assets/img/logo.png" alt="Logo de Viandas Solidarias" loading="lazy" width="100">
+        </a>
+    </nav>
+    <button class="menu-toggle">☰</button> <!-- Botón de menú -->
+    <nav class="menu">
+        <a href="/colaboraciones">Colaborá</a>
+        <a href="/puntos">Canjeá</a>
+        <a href="/reportarIncidente">Reporta</a>
+        <a href="/perfil">Mi perfil</a>
+        <a href="/cerrarSesion">Cerrar Sesión</a>
+    </nav>
+</header>
+
+<main>
+    <h1>SUSCRIPCIONES</h1>
+    {{#if solicitudExitosa}}
+        <div class="mensaje-exito">{{reporteExitoso}}</div>
+    {{/if}}
+    <section class="mapaHeladeras">
+        <h2>¿Dónde encontrar nuestras heladeras?</h2>
+        <div id="map"></div>
+    </section>
+
+    <h2>Elegi los casos a ser notificados</h2>
+
+    <div class="cards-container">
+        <div class="card">
+            <img src="../assets/img/caso1.png" alt="Imagen 1" class="card-image">
+            <p>1. Será notificado, en caso de que las viandas disponibles en la heladera sean iguales o menores al valor que usted disponga.</p>
+            <button onclick="mostrarFormulario('formulario1')">Suscribirse</button>
+        </div>
+
+        <div class="card">
+            <img src="../assets/img/caso2.jpg" alt="Imagen 2" class="card-image">
+            <p>2. Será notificado, en caso de que falten la cantidad que usted disponga de viandas para que la heladera esté llena y no se puedan ingresar más viandas.</p>
+            <button onclick="mostrarFormulario('formulario2')">Suscribirse</button>
+        </div>
+
+        <div class="card">
+            <img src="../assets/img/caso3.jpg" alt="Imagen 3" class="card-image">
+            <p>3. Será notificado, en caso de que la heladera sufra un desperfecto y las viandas deban ser llevadas a otras heladeras para que no se echen a perder.</p>
+            <button onclick="mostrarFormulario('formulario3')">Suscribirse</button>
+        </div>
+    </div>
+
+    <!-- Formulario 1 -->
+    <div id="formulario1" class="formulario" style="display: none;">
+        <h2>Nueva Suscripción</h2>
+
+        <form method="POST" action="/suscripcionColaborador" id="form-registro">
+            <p>Ingresa heladera a suscribirse:</p>
+            <select name="heladera" required>
+                {{#each heladeras}}
+                    <option value="{{this.id}}">{{this.nombreHeladera}}</option>
+                {{/each}}
+            </select>
+
+            <div>
+                <p>Elegir cantidad de viandas disponibles en la heladera:</p>
+                <input type="text" name="viandasDisponibles" required>
+            </div>
+
+            <div id="contacto-container">
+                <p>Medios de Contacto:</p>
+                <div class="contacto-grupo">
+                    <div>
+                        <select name="tipoContacto" class="tipo_contacto" required>
+                            <option value="Whatsapp">Whatsapp</option>
+                            <option value="Telefono">Teléfono</option>
+                            <option value="Telegram">Telegram</option>
+                            <option value="Mail">Mail</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input type="text" name="contacto" class="contacto" placeholder="Contacto" required>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" name="action" value="agregarViandas">Suscribirse para agregar viandas</button>
+        </form>
+    </div>
+
+    <!-- Formulario 2 -->
+    <div id="formulario2" class="formulario" style="display: none;">
+        <h2>Nueva Suscripción</h2>
+        <form method="POST" action="/suscripcionColaborador" id="form-registro">
+            <p>Ingresa heladera a suscribirse:</p>
+            <select name="heladera" required>
+                {{#each heladeras}}
+                    <option value="{{this.id}}">{{this.nombreHeladera}}</option>
+                {{/each}}
+            </select>
+
+            <div>
+                <p>Elegir cantidad de viandas para que la heladera esté llena:</p>
+                <input type="text" name="viandasParaQueEsteLLena" required>
+            </div>
+
+            <div>
+                <p>Elegir cantidad de viandas para llevar a heladera menos llena:</p>
+                <input type="text" name="viandasALLevar" required>
+            </div>
+            <div id="contacto-container">
+                <p>Medios de Contacto:</p>
+                <div class="contacto-grupo">
+                    <div>
+                        <select name="tipoContacto" class="tipo_contacto" required>
+                            <option value="Whatsapp">Whatsapp</option>
+                            <option value="Telefono">Teléfono</option>
+                            <option value="Telegram">Telegram</option>
+                            <option value="Mail">Mail</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input type="text" name="contacto" class="contacto" placeholder="Contacto" required>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" name="action" value="reducirViandas">Suscribirse para reducir viandas</button>
+        </form>
+    </div>
+
+    <!-- Formulario 3 -->
+    <div id="formulario3" class="formulario" style="display: none;">
+        <h2>Nueva Suscripción</h2>
+        <form method="POST" action="/suscripcionColaborador" id="form-registro">
+            <p>Ingresa heladera a suscribirse:</p>
+            <select name="heladera[]" multiple required>
+                {{#each heladeras}}
+                    <option value="{{this.id}}">{{this.nombreHeladera}}</option>
+                {{/each}}
+            </select>
+
+
+            <div id="contacto-container">
+                <p>Medios de Contacto:</p>
+                <div class="contacto-grupo">
+                    <div>
+                        <select name="tipoContacto" class="tipo_contacto" required>
+                            <option value="Whatsapp">Whatsapp</option>
+                            <option value="Telefono">Teléfono</option>
+                            <option value="Telegram">Telegram</option>
+                            <option value="Mail">Mail</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input type="text" name="contacto" class="contacto" placeholder="Contacto" required>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" name="action" value="reubicarViandas">Suscribirse para reubicar viandas</button>
+        </form>
+    </div>
+</main>
+<div style="margin-bottom: 60px;"></div>
+<div style="background-color: #ffffff; height: 60px;"></div>
+<footer class="footer">
+    <nav>
+        <ul>
+            <li><a href="/termino">Términos y condiciones</a></li>
+            <li><a href="/preguntasFrecuentes">Preguntas frecuentes</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    <a href="#" class="scroll-to-top" aria-label="Subir al inicio">
+        <img src="../assets/img/flecha-hacia-arriba-blanca.png" alt="Ir arriba flecha">
+    </a>
+</footer>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src = "../js/suscripciones.js"></script>
+<script src="../js/mapa.js"></script>
+<script>
+    // Obtener los elementos
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.menu');
+
+    // Asegurarse de que el menú esté oculto al principio
+    window.onload = function() {
+        menu.style.display = 'none';
+    };
+
+    // Mostrar u ocultar el menú al hacer clic en el botón de menú
+    menuToggle.addEventListener('click', (event) => {
+        event.stopPropagation(); // Evita que se cierre al hacer clic en el botón
+        if (menu.style.display === 'none' || menu.style.display === '') {
+            menu.style.display = 'block'; // Muestra el menú
+        } else {
+            menu.style.display = 'none'; // Oculta el menú
+        }
+    });
+
+    // Cerrar el menú si se hace clic fuera de él
+    document.addEventListener('click', (e) => {
+        if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
+            menu.style.display = 'none'; // Cierra el menú si se hace clic fuera de él
+        }
+    });
+</script>
+<script src="../js/menuDesp.js"></script>
+</body>
+</html>

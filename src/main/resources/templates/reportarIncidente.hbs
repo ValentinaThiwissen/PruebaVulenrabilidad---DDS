@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <style>
+        .header {
+            height: 14vh;
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+    <title>Reportes | Viandas Solidarias</title>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <nav>
+        <a href="/personaHumana">
+            <img src="../assets/img/logo.png" alt="Logo de Viandas Solidarias" loading="lazy" width="100">
+        </a>
+    </nav>
+    <button class="menu-toggle">☰</button> <!-- Botón de menú -->
+    <nav class="menu">
+        <a href="/colaboraciones">Colaborá</a>
+        <a href="/suscripcionColaborador">Suscribite</a>
+        <a href="/puntos">Canjeá</a>
+        <a href="/perfil">Mi perfil</a>
+        <a href="/cerrarSesion">Cerrar Sesión</a>
+    </nav>
+</header>
+
+<main class="container">
+
+    <section class="nuevo-reporte">
+        <form method="POST" action="/reportarIncidente" enctype="multipart/form-data" id="form-registro" class="formulario">
+            <h3>Nuevo incidente</h3>
+
+            {{#if solicitudExitosa}}
+                <div class="mensaje-exito">{{reporteExitoso}}</div>
+            {{/if}}
+
+            <!-- Contenedor para centrar la imagen -->
+            <div class="imagen-centrada">
+                <img src="../assets/img/fallatecnica2.png" alt="Logo de Viandas Solidarias" loading="lazy" width="150">
+            </div>
+
+            <p>Heladera del incidente:</p>
+            <select name="heladera" required>
+                <option value="" disabled selected>Seleccione una heladera</option>
+                {{#each heladeras}}
+                    <option value="{{this.id}}">{{this.nombreHeladera}}</option>
+                {{/each}}
+            </select>
+
+            <!-- Campo para agregar una imagen -->
+            <input type="file" name="imagen" id="imagen">
+
+            <!-- Campo para observaciones -->
+            <textarea name="observaciones" id="observaciones" placeholder="Observaciones" rows="4"></textarea>
+
+            <button type="submit">Reportar</button>
+        </form>
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <nav>
+        <ul>
+            <li><a href="/termino">Términos y condiciones</a></li>
+            <li><a href="/preguntasFrecuentes">Preguntas frecuentes</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+</footer>
+<script src="../js/menuDesp.js"></script>
+</body>
+
+</html>

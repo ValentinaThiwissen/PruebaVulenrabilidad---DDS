@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse | Viandas Solidarias </title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/estilos.css">
+
+</head>
+<body class>
+<header class="header">
+    <nav>
+        <a href="/inicio">
+            <img src="../assets/img/logo.png" alt="Logo de Viandas Solidarias" loading="lazy" width="100">
+        </a>
+    </nav>
+</header>
+<main>
+    <section class="seccionFormulario">
+        <h2>Registre su organización</h2>
+        <h4>Ingrese sus datos</h4>
+        <form method ="POST" action="/registroPersonaJuridica">
+            <div>
+                <input name="nombre-organizacion" id="nombre-organizacion" placeholder="Nombre de la organizacion" required>
+            </div>
+            <div>
+                <input name="razonSocial" id="razonSocial" placeholder="Razon social" required>
+            </div>
+            <div>
+                <select name="tipoJuridico" id="tipoJuridico" required>
+                    <option value="GUBERNAMENTAL" selected>Gubernamental</option>
+                    <option value="ONG">ONG</option>
+                    <option value="EMPRESA">Empresa</option>
+                    <option value="INSTITUCIONAL">Institucional</option>
+                </select>
+            </div>
+            <div>
+                <label class="labelColaborar">Forma de colaborar:</label>
+                <fieldset>
+                    <legend>Selecciona al menos una opción:</legend>
+                    <div class="opcion">
+                    <label>
+                        <input type="checkbox" name="formaColaborar[]" value="DONACIONMONETARIA">
+                        Donación Monetaria
+                    </label>
+                    </div>
+                    <div class="opcion">
+                    <label>
+                        <input type="checkbox" name="formaColaborar[]" value="ENCARGARSEHELADERA">
+                        Hacerse cargo de heladera
+                    </label>
+                    </div>
+                    <div class="opcion">
+                    <label>
+                        <input type="checkbox" name="formaColaborar[]" value="OFRECERPRODUCTOS">
+                        Ofrecer productos y/o servicios
+                    </label>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div id="contacto-container">
+                <label class="labelColaborar">Medios de contacto:</label>
+                <div class="contacto-grupo">
+                    <div>
+                        <label>
+                            <select name="tipo_contacto[]" class="tipo_contacto" required>
+                                <option value="Whatsapp">Whatsapp</option>
+                                <option value="Telefono">Teléfono</option>
+                                <option value="Telegram">Telegram</option>
+                                <option value="Mail">Mail</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div>
+                        <input type="text" name="contacto[]" class="contacto" placeholder="Contacto" required>
+                    </div>
+                </div>
+            </div>
+            <!-- Botón para agregar más medios de contacto -->
+            <button type="button" id="add-contacto-btn">+</button>
+            <p id="contacto-limite" style="color:red; display:none;">Máximo de 5 contactos alcanzado</p>
+
+            <p>Ingrese su direccion(si tiene)</p>
+            <div>
+                <input type="text" name="localidad" id="localidad" placeholder="Localidad">
+            </div>
+            <div>
+                <input type="text" name="partido" id="partido" placeholder="Partido">
+            </div>
+            <div>
+                <input type="text" name="provincia" id="provincia" placeholder="Provincia">
+            </div>
+            <div>
+                <input type="text" name="altura" id="altura" placeholder="Altura">
+            </div>
+            <div>
+                <input type="text" name="calle" id="calle" placeholder="Calle">
+            </div>
+            <div>
+                <input type="email" name="mail" id="mail" placeholder="ejemplo@mail.com">
+            </div>
+
+            <div>
+                <input type="usuario" name="usuario" id ="usuario" placeholder="Nombre de usuario" required>
+            </div>
+
+            <div>
+                <input type="password" name="contrasenia" id="contrasenia" placeholder="Contraseña" required>
+            </div>
+
+            <button type="submit">Registrarse</button>
+            <div>
+                <a class="ayuda" href="/inicioSesion">Ya sos colaborador?</a>
+            </div>
+        </form>
+
+    </section>
+
+</main>
+<footer class="footer">
+    <nav>
+        <ul>
+            <li><a href="/termino">Términos y condiciones</a></li>
+            <li><a href="/preguntasFrecuentes">Preguntas frecuentes</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    <a href="#" class="scroll-to-top" aria-label="Subir al inicio">
+        <img src="../assets/img/flecha-hacia-arriba-blanca.png" alt="Ir arriba flecha">
+    </a>
+</footer>
+<script src="../js/registroPersonaHumana.js"></script>
+</body>
+</html>

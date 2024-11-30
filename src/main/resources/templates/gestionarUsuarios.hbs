@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <style>
+        .header {
+            height: 14vh;
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+    <title>Mis Formularios | Viandas Solidarias</title>
+</head>
+
+<body class="body Interno centrado">
+
+<header class="header">
+    <nav>
+        <a href="/administrador">
+            <img src="../assets/img/logo.png" alt="Logo de Viandas Solidarias" loading="lazy" width="100">
+        </a>
+        <ul>
+            <li>
+                <a href="/cerrarSesion">
+                    <img src="../assets/img/cerrarSesion.png" alt="Cerrar sesión" loading="lazy">
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h1>Lista de Usuarios</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Contraseña</th>
+            <th>Rol</th>
+            <th>Permiso Registrar Vulnerable</th>
+            <th>Permiso Donacion Monetaria</th>
+            <th>Permiso Donacion Viandas</th>
+            <th>Permiso Distribución Viandas</th>
+            <th>Permiso Ofrecer Productos</th>
+            <th>Permiso Encargarse Heladera</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each usuario}}
+            <tr>
+                <td>{{this.nombreUsuario}}</td>
+                <td>{{this.contrasenia}}</td>
+                <td>{{this.rol}}</td>
+                <td>{{#if this.permisoRegistrarPersonaVulnerable}}Sí{{else}}No{{/if}}</td>
+                <td>{{#if this.permisoDonacionMonetaria}}Sí{{else}}No{{/if}}</td>
+                <td>{{#if this.permisoDonacionViandas}}Sí{{else}}No{{/if}}</td>
+                <td>{{#if this.permisoDistribucionViandas}}Sí{{else}}No{{/if}}</td>
+                <td>{{#if this.permisoOfrecerProductos}}Sí{{else}}No{{/if}}</td>
+                <td>{{#if this.permisoEncargarseHeladera}}Sí{{else}}No{{/if}}</td>
+                <td>
+                    <button class="eliminar-btn" data-id="{{this.id}}">Eliminar</button>
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</main>
+
+<!-- Modal de Confirmación -->
+<div id="modalEliminar" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>¿Estás seguro de que deseas eliminar este usuario?</h3>
+        <form id="eliminarForm" action="/gestionarUsuarios" method="post">
+            <input type="hidden" name="usuarioId" id="usuarioId">
+            <button type="submit">Eliminar</button>
+            <button type="button" id="cancelarBtn">Cancelar</button>
+        </form>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <nav>
+        <ul>
+            <li><a href="/termino">Términos y condiciones</a></li>
+            <li><a href="/preguntasFrecuentes">Preguntas frecuentes</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    <a href="#" class="scroll-to-top" aria-label="Subir al inicio">
+        <img src="../assets/img/flecha-hacia-arriba-blanca.png" alt="Ir arriba flecha">
+    </a>
+</footer>
+<script src="../js/botones.js"></script>
+<script src="../js/flecha.js"></script>
+</body>
+</html>

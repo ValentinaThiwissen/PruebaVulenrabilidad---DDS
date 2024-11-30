@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <style>
+        .header {
+            height: 14vh;
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+    <title>Reportes Heladera| Viandas Solidarias</title>
+</head>
+
+<body class="body Interno centrado">
+
+    <!-- HEADER -->
+    <header class="header">
+        <nav>
+            <a href="/inicio">
+                <img src="../assets/img/logo.png" alt="Logo de Viandas Solidarias" loading="lazy" width="100">
+            </a>
+            <ul>
+                <li>
+                    <a href="/cerrarSesion">
+                        <img src="../assets/img/cerrarSesion.png" alt="Cerrar sesión" loading="lazy">
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <main>
+            <h1>Generar Reportes</h1>
+            <form action="/reportes/generar" method="post">
+                <label for="tipoReporte">Seleccionar tipo de reporte:</label>
+                <select name="tipoReporte" id="tipoReporte" required>
+                    <option value="fallas">Fallas</option>
+                    <option value="viandas">Viandas</option>
+                    <option value="viandasPorColaborador">Viandas por Colaborador</option>
+                </select>
+                <button type="submit">Generar Reporte</button>
+            </form>
+
+        <section class="Alerta">
+
+            <h2>Listado de Reportes</h2>
+            <h3>Reporte de cantidad fallas por heladera</h3>
+
+            <table id="reportesFallasTable">
+                <tbody>
+                </tbody>
+            </table>
+            <h3>Reporte de cantidad viandas retiradas por heladera</h3>
+            <table id="reportesViandasRetiradasTable">
+                <tbody>
+
+                </tbody>
+            </table>
+
+            <h3>Reporte de cantidad viandas por colaborador</h3>
+            <table id="reportesViandasColaboradorTable">
+                <tbody>
+
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer class="footer">
+        <nav>
+            <ul>
+                <li><a href="/termino">Términos y condiciones</a></li>
+                <li><a href="/preguntasFrecuentes">Preguntas frecuentes</a></li>
+                <li><a href="/contacto">Contacto</a></li>
+            </ul>
+        </nav>
+        <a href="#" class="scroll-to-top" aria-label="Subir al inicio">
+            <img src="../assets/img/flecha-hacia-arriba-blanca.png" alt="Ir arriba flecha">
+        </a>
+
+    </footer>
+
+</body>
+
+</html>

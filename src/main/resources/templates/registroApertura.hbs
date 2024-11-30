@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <style>
+        .mensaje-exito {
+            color: green; /* Cambia el color del texto a rojo */
+            text-align: center; /* Centra el mensaje */
+            font-weight: bold; /* Haz el texto más destacado */
+            font-size: 1.2em; /* Aumenta el tamaño del texto */
+            margin-top: 20px; /* Agrega un espacio superior para separar del contenido */
+        }
+        .header {
+            height: 14vh;
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .mensaje-exito {
+            color: green; /* Cambia el color del texto a rojo */
+            text-align: center; /* Centra el mensaje */
+            font-weight: bold; /* Haz el texto más destacado */
+            font-size: 1.2em; /* Aumenta el tamaño del texto */
+            margin-top: 20px; /* Agrega un espacio superior para separar del contenido */
+        }
+    </style>
+    <title>Registro Apertura| Viandas Solidarias</title>
+</head>
+
+<body class="body Interno centrado">
+
+<!-- HEADER -->
+<header class="header">
+    <nav>
+        <a href="/personaHumana">
+            <img src="../assets/img/logo.png" alt="Logo de Viandas Solidarias" loading="lazy" width="100">
+        </a>
+    </nav>
+    <button class="menu-toggle">☰</button> <!-- Botón de menú -->
+    <nav class="menu">
+        <a href="/colaboraciones">Colaborá</a>
+        <a href="/suscripcionColaborador">Suscribite</a>
+        <a href="/puntos">Canjeá</a>
+        <a href="/reportarIncidente">Reporta</a>
+        <a href="/perfil">Mi perfil</a>
+        <a href="/cerrarSesion">Cerrar Sesión</a>
+    </nav>
+</header>
+
+<main>
+    <section class="seccionFormulario">
+        <h2>Registro de apertura una heladera</h2>
+        {{#if solicitudExitosa}}
+            <div class="mensaje-exito">{{solicitudExitosa}}</div>
+        {{/if}}
+        <p>Recuerde que para poder abrir una heladera debe registrarse en el sistema</p>
+
+        <form method="POST" action="/registroApertura" enctype="multipart/form-data" id="form-registro" class="formulario">
+            <div>
+                <label for="motivo">Motivo de la apertura:</label>
+                <select name="motivo" id="motivo" required>
+                    <option value="ingresarViandas">Ingresar viandas</option>
+                    <option value="retirarViandas">Retirar viandas</option>
+                </select>
+            </div>
+            <div>
+                <label for="heladera">Seleccionar heladera:</label>
+                <select name="heladera" id="heladera" required>
+                    {{#each heladeras}}
+                        <option value="{{this.id}}">{{this.nombreHeladera}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div>
+                <label for="cantidadViandas">Cantidad de viandas:</label>
+                <input name="cantidadViandas" id="cantidadViandas" placeholder="Cantidad de viandas" required>
+            </div>
+            <button type="submit">Registrar</button>
+        </form>
+    </section>
+</main>
+
+<footer class="footer">
+    <nav>
+        <ul>
+            <li><a href="/termino">Términos y condiciones</a></li>
+            <li><a href="/preguntasFrecuentes">Preguntas frecuentes</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+        </ul>
+    </nav>
+</footer>
+<script src="../js/menuDesp.js"></script>
+</body>
+
+</html>

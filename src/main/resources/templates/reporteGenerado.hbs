@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <title>Reporte Generado | Viandas Solidarias</title>
+</head>
+<body>
+<header class="header">
+    <nav>
+        <a href="/inicio">
+            <img src="../assets/img/logo.png" alt="Logo Viandas Solidarias" loading="lazy" width="100">
+        </a>
+    </nav>
+</header>
+<main>
+    <h1>Reporte Generado</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Datos</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each this}}
+            <tr>
+                <td>{{@key}}</td>
+                <td>{{this}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+    <form action="/reportes/exportar" method="get">
+        <input type="hidden" name="tipoReporte" value="{{tipoReporte}}">
+        <button type="submit">Exportar a PDF</button>
+    </form>
+</main>
+<footer class="footer">
+    <nav>
+        <ul>
+            <li><a href="/termino">Términos y condiciones</a></li>
+            <li><a href="/preguntasFrecuentes">Preguntas frecuentes</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    <a href="#" class="scroll-to-top" aria-label="Subir al inicio">
+        <img src="../assets/img/flecha-hacia-arriba-blanca.png" alt="Ir arriba flecha">
+    </a>
+
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viandas Solidarias | Donaciones</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <style>
+        h2{
+            font-size: 1.4rem;
+            color: var(--color-principal);
+            font-weight: bold;
+        }
+        .subtitle {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            margin-top: 20px; /* Margen superior añadido */
+            color: #333; /* Color de subtítulo */
+        }
+
+        .contact-container {
+            display: flex;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .contact-info {
+            background-color: #daecf2; /* Color ajustado */
+            color: var(--third-color-t);
+            padding: 30px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Alineación a la izquierda */
+        }
+
+        .contact-info h1 {
+            font-size: 2em;
+            text-align: left; /* Alineación a la izquierda */
+        }
+
+        .contact-info h2,
+        .contact-info p {
+            text-align: left; /* Alineación a la izquierda */
+        }
+
+        .contact-info .subtitle {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            margin-top: 5px;
+            color: #333; /* Color de subtítulo */
+        }
+
+        .contact-form {
+            flex: 1;
+            padding: 30px;
+            background-color: #fff;
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form label {
+            margin-top: 10px;
+            font-weight: bold;
+            color: var(--color-acento); /* Cambiar el color de las etiquetas */
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            margin-top: 5px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .contact-form button {
+            margin-top: 20px;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--color-acento);
+            color: var(--third-color-t);
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: var(--color-acento-hover);
+        }
+    </style>
+</head>
+
+<body class="bodyInterno centrado">
+
+<!-- HEADER -->
+<header class="header">
+    <nav>
+        <a href="/inicio">
+            <img src="../assets/img/logo.png" alt="Logo de Viandas Solidarias" loading="lazy" width="100">
+        </a>
+        <ul>
+        </ul>
+
+    </nav>
+</header>
+
+<!-- MAIN CONTENT -->
+<main>
+    <div class="contact-container">
+        <div class="contact-info">
+            <h1>Contactanos</h1>
+            <p>Si querés ser parte, dejános tus datos y nos pondremos en contacto.</p>
+            <h2>Ubicación:</h2>
+            <p class="subtitle">Av. Medrano 951, C1179AAQ Cdad. Autónoma de Buenos Aires</p>
+            <h2>E-Mail:</h2>
+            <p class="subtitle">info@viandas.com.ar</p>
+        </div>
+        <div class="contact-form">
+            <form action="/submit" method="post">
+                <label for="name">Nombre y Apellido</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Teléfono</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="message">Consulta</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <nav>
+        <ul>
+            <li><a href="/termino">Términos y condiciones</a></li>
+            <li><a href="/preguntasFrecuentes">Preguntas frecuentes</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    <a href="#" class="scroll-to-top" aria-label="Subir al inicio">
+        <img src="../assets/img/flecha-hacia-arriba-blanca.png" alt="Ir arriba flecha">
+    </a>
+</footer>
+
+</body>
+
+</html>
